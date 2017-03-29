@@ -62,12 +62,15 @@ S_Key_Glg_Info Dlg_key_value;
 void disable_other_window(void)
 {
     WM_DisableWindow(icon_view);
+    //WM_DisableWindow(parameter_window);
 }
 
 void enable_other_window(void)
 {
     WM_EnableWindow(icon_view);
+    //WM_EnableWindow(parameter_window);
 }
+
 void updata_input(void)
 {
     WM_HWIN hItem;
@@ -96,6 +99,8 @@ void updata_input(void)
     break;
     }
 }
+
+
 void show_psw_dlg(void)
 {
     WM_HWIN hItem;
@@ -135,8 +140,6 @@ void show_key_board(const char* keyboard_name,unsigned char input_length)
     disable_other_window();
     updata_input();
 }
-
-
 
 void reset_key_value(void)
 {
@@ -180,6 +183,14 @@ void deal_button_ok(void)
         //Dlg_key_value.key_board_value = EDIT_GetValue(hItem);
         //display_value_on_edit(Dlg_key_value.key_board_value,Dlg_key_value.cur_cursor);
         display_value_on_edit(Dlg_key_value.int_key_value,Dlg_key_value.cur_cursor);
+    }
+    if(Dlg_key_value.cur_function == 88)//√‹¬Î
+    {
+        if((Dlg_key_value.input_length == 8)&&(Dlg_key_value.int_key_value == 88888888))
+        {
+            enable_button_save();
+            enable_set_parameter();
+        }
     }
     WM_HideWindow(key_board);
     enable_other_window();

@@ -36,6 +36,7 @@
 
 // USER START (Optionally insert additional defines)
 #include "include.h"
+#include "protocol.h"
 void show_main_windows(void)
 {
     WM_HideWindow(parameter_window);
@@ -187,12 +188,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
                 button_stat[0]= 1;
                 ICONVIEW_SetFont(icon_view, HZ32_32);
                 ICONVIEW_SetItemText(icon_view,1,"排水中");
+                send_start_drain();
             }
             else
             {
                 button_stat[0]= 0;
                 ICONVIEW_SetFont(icon_view, HZ32_32);
                 ICONVIEW_SetItemText(icon_view,1,"排水");
+                send_stop_drain();
             }
             break;
 
@@ -203,12 +206,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
                 button_stat[1]= 1;
                 ICONVIEW_SetFont(icon_view, HZ32_32);
                 ICONVIEW_SetItemText(icon_view,2,"加水中");
+              send_start_watering();
             }
             else
             {
                 button_stat[1]= 0;
                 ICONVIEW_SetFont(icon_view, HZ32_32);
                 ICONVIEW_SetItemText(icon_view,2,"加水");
+              send_stop_watering();
             }
             break;
 
@@ -219,12 +224,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
                 button_stat[2]= 1;
                 ICONVIEW_SetFont(icon_view, HZ32_32);
                 ICONVIEW_SetItemText(icon_view,3,"冲洗中");
+              send_start_wash();
             }
             else
             {
                 button_stat[2]= 0;
                 ICONVIEW_SetFont(icon_view, HZ32_32);
                 ICONVIEW_SetItemText(icon_view,3,"冲洗");
+              send_stop_wash();
             }
             break;
         case 4:

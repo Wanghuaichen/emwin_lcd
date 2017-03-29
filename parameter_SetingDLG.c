@@ -60,7 +60,7 @@
 
 #define WINDOWS_BACK_COLOUR (0Xbdfb86)
 #include "include.h"
-
+#include "save_data.h"
 // USER END
 
 /*********************************************************************
@@ -72,11 +72,121 @@
 
 // USER START (Optionally insert additional static data)
 
+void disable_button_save(void)
+{
+    WM_HWIN hItem;
+    hItem = WM_GetDialogItem(parameter_window, ID_BUTTON_2);
+    WM_DisableWindow(hItem);
+}
+
+void enable_button_save(void)
+{
+    WM_HWIN hItem;
+    hItem = WM_GetDialogItem(parameter_window, ID_BUTTON_2);
+    WM_EnableWindow(hItem);
+}
+
+void disable_set_parameter(void)
+{
+    WM_HWIN hItem;
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_0);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_1);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_2);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_3);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_4);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_5);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_6);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_7);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_8);
+    WM_DisableWindow(hItem);
+}
+void enable_set_parameter(void)
+{
+    WM_HWIN hItem;
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_0);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_1);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_2);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_3);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_4);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_5);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_6);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_7);
+    WM_EnableWindow(hItem);
+    hItem = WM_GetDialogItem(parameter_window, ID_EDIT_8);
+    WM_EnableWindow(hItem);
+}
+
+void show_save_parameter(P_S_Parameter_Info beer)
+{
+	WM_HWIN hItem;
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_0);
+	EDIT_SetDecMode(hItem,beer->tanghua_temperature_max,beer->tanghua_temperature_max,beer->tanghua_temperature_max,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_1);
+	EDIT_SetDecMode(hItem,beer->tanghua_temperature_min,beer->tanghua_temperature_min,beer->tanghua_temperature_min,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_2);
+	EDIT_SetDecMode(hItem,beer->tanghua_time,beer->tanghua_time,beer->tanghua_time,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_3);
+	EDIT_SetDecMode(hItem,beer->first_add_time,beer->first_add_time,beer->first_add_time,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_4);
+	EDIT_SetDecMode(hItem,beer->second_add_time,beer->second_add_time,beer->second_add_time,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_5);
+	EDIT_SetDecMode(hItem,beer->third_add_time,beer->third_add_time,beer->third_add_time,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_6);
+	EDIT_SetDecMode(hItem,beer->add_coagulant_time,beer->add_coagulant_time,beer->add_coagulant_time,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_7);
+	EDIT_SetDecMode(hItem,beer->boil_time,beer->boil_time,beer->boil_time,0,0);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_8);
+	EDIT_SetDecMode(hItem,beer->wash_volume,beer->wash_volume,beer->wash_volume,0,0);
+}
+
+void save_parameter_to_rom(P_S_Parameter_Info beer)
+{
+	WM_HWIN hItem;
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_0);
+	beer->tanghua_temperature_max = EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_1);
+	beer->tanghua_temperature_min= EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_2);
+	beer->tanghua_time= EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_3);
+	beer->first_add_time= EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_4);
+	beer->second_add_time= EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_5);
+	beer->third_add_time= EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_6);
+	beer->add_coagulant_time= EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_7);
+	beer->boil_time= EDIT_GetValue(hItem);
+	hItem = WM_GetDialogItem(parameter_window, ID_EDIT_8);
+	beer->wash_volume= EDIT_GetValue(hItem);
+	save_machine_info();
+}
+
 void show_parameter_window(void)
 {
-    WM_HideWindow(window);
-    WM_ShowWindow(parameter_window);
+	WM_HWIN hItem;
+	WM_HideWindow(window);
+	WM_ShowWindow(parameter_window);	
+	hItem = WM_GetDialogItem(parameter_window, ID_LISTBOX_0);
+	show_save_parameter(&(machine_info.beer[LISTBOX_GetSel(hItem)]));
 }
+
 
 // USER END
 
@@ -344,8 +454,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTBOX_SetFont(hItem, HZ24_24);
     LISTBOX_AddString(hItem, "黑啤");
     LISTBOX_AddString(hItem, "波特");
-    LISTBOX_AddString(hItem, "经典");
-    LISTBOX_AddString(hItem, "啤酒");
+    LISTBOX_AddString(hItem, "黄啤");
+    LISTBOX_AddString(hItem, "小麦啤");
     LISTBOX_AddString(hItem, "自定义一");
     LISTBOX_AddString(hItem, "自定义二");
     LISTBOX_AddString(hItem, "自定义三");
@@ -353,6 +463,31 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     // USER START (Optionally insert additional code for further widget initialization)
     LISTBOX_SetAutoScrollV(hItem,1);
     LISTBOX_SetScrollbarWidth(hItem,35);
+
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_2);
+    WM_DisableWindow(hItem);
+
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_0);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_1);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_2);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_3);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_4);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_5);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_6);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_7);
+    WM_DisableWindow(hItem);
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_8);
+    WM_DisableWindow(hItem);
+    //diasble_button_save();
+    //disable_set_parameter();
+
     // USER END
     break;
   case WM_NOTIFY_PARENT:
@@ -367,6 +502,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+        show_runing_window();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -396,6 +532,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+        hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTBOX_0);
+        save_parameter_to_rom(&(machine_info.beer[LISTBOX_GetSel(hItem)]));
+        disable_button_save();
+        disable_set_parameter();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -410,6 +550,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+        show_psw_dlg();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -597,6 +738,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       }
       break;
     case ID_LISTBOX_0: // Notifications sent by 'Listbox'
+        hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTBOX_0);
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -604,6 +746,49 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+        switch(LISTBOX_GetSel(hItem))
+        {
+            case 0:
+		set_runing_window_beer_name("黑啤");
+		show_save_parameter(&(machine_info.beer[0]));
+            break;
+
+            case 1:
+                set_runing_window_beer_name("波特");
+		show_save_parameter(&(machine_info.beer[1]));
+            break;
+
+            case 2:
+                set_runing_window_beer_name("黄啤");
+		show_save_parameter(&(machine_info.beer[2]));
+            break;
+
+            case 3:
+                set_runing_window_beer_name("小麦啤");
+		show_save_parameter(&(machine_info.beer[3]));
+            break;
+
+            case 4:
+                set_runing_window_beer_name("自定义一");
+		show_save_parameter(&(machine_info.beer[4]));
+            break;
+
+            case 5:
+                set_runing_window_beer_name("自定义二");
+		show_save_parameter(&(machine_info.beer[5]));
+            break;
+
+            case 6:
+                set_runing_window_beer_name("自定义三");
+		show_save_parameter(&(machine_info.beer[6]));
+            break;
+
+            case 7:
+                set_runing_window_beer_name("自定义四");
+		show_save_parameter(&(machine_info.beer[7]));
+            break;
+        }
+
         // USER END
         break;
       case WM_NOTIFICATION_SEL_CHANGED:

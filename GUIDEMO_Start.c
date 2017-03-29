@@ -21,13 +21,13 @@ Purpose     : GUIDEMO initialization
 */
 
 #include "GUIDEMO.h"
-#include "include.h"
+
 /*********************************************************************
 *
 *       MainTask
 */
 
-  WM_HWIN window,frame,key_board,parameter_window;
+  WM_HWIN window,frame,key_board,parameter_window,runing_window;
 
 void MainTask(void) {
   #if GUI_WINSUPPORT
@@ -41,6 +41,7 @@ void MainTask(void) {
     WM_MULTIBUF_Enable(1);
   #endif
   //GUIDEMO_Main();
+  runing_window = Createruning_windows();
   window = CreateWindow();
   //frame = CreateFramewin();
   parameter_window = Createparameter_Seting();
@@ -49,13 +50,12 @@ void MainTask(void) {
   key_board = Createkey_board();
 
   //WM_HideWindow(frame);
-  WM_HideWindow(key_board);
+  WM_HideWindow(runing_window);
   WM_HideWindow(parameter_window);
+  WM_HideWindow(key_board);
   while(1)
   {
-      GUI_Delay(10);
-    //GUI_TOUCH_Exec();
-    //GUI_Exec();
+      GUI_Delay(20);
   }
 
 }
