@@ -21,7 +21,9 @@ Purpose     : GUIDEMO initialization
 */
 
 #include "GUIDEMO.h"
-
+#include "include.h"
+#include "usart.h"
+#include "delay.h"
 /*********************************************************************
 *
 *       MainTask
@@ -53,9 +55,11 @@ void MainTask(void) {
   WM_HideWindow(runing_window);
   WM_HideWindow(parameter_window);
   WM_HideWindow(key_board);
+	usart_recv_data();
   while(1)
   {
-      GUI_Delay(20);
+	GUI_Delay(20);
+	deal_uasrt_recv_data();
   }
 
 }

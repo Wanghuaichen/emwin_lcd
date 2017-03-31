@@ -77,5 +77,11 @@ void show_main_windows(void);
 
 void set_runing_window_beer_name(const char* name);
 void show_main_windows(void);
+
+
+WM_HWIN Createruning_windows(void);
+WM_HWIN CreateWindow(void);
+WM_HWIN Createparameter_Seting(void);
+WM_HWIN Createkey_board(void);
 #endif
 

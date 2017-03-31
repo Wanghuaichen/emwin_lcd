@@ -517,6 +517,26 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+        hItem = WM_GetDialogItem(parameter_window, ID_BUTTON_2);
+    	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_0);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_1);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_2);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_3);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_4);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_5);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_6);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_7);
+	WM_DisableWindow(hItem);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_8);
+	WM_DisableWindow(hItem);
         show_main_windows();
         // USER END
         break;
