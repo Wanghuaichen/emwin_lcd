@@ -219,7 +219,7 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { TEXT_CreateIndirect, "Text_tips", ID_TEXT_8, 575, 426, 189, 20, 0, 0x64, 0 },
   { TEXT_CreateIndirect, "Text_wash_sink", ID_TEXT_9, 30, 425, 300, 30, 0, 0x64, 0 },
   { EDIT_CreateIndirect, "Edit_wash_sink", ID_EDIT_8, 360, 425, 80, 30, 0, 0x64, 0 },
-  { LISTBOX_CreateIndirect, "Listbox", ID_LISTBOX_0, 540, 37, 200, 124, 0, 0x0, 0 },
+  { LISTBOX_CreateIndirect, "Listbox", ID_LISTBOX_0, 520, 35, 240, 125, 0, 0x0, 0 },
   // USER START (Optionally insert additional widgets)
   // USER END
 };
@@ -502,6 +502,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+         hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTBOX_0);
+        send_paratemer(LISTBOX_GetSel(hItem));
         show_runing_window();
         // USER END
         break;
@@ -850,6 +852,8 @@ WM_HWIN Createparameter_Seting(void) {
 }
 
 // USER START (Optionally insert additional public code)
+
+
 // USER END
 
 /*************************** End of file ****************************/

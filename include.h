@@ -77,7 +77,7 @@ void show_main_windows(void);
 
 void set_runing_window_beer_name(const char* name);
 void show_main_windows(void);
-
+void show_cur_stat(char* stat_info);
 
 WM_HWIN Createruning_windows(void);
 WM_HWIN CreateWindow(void);

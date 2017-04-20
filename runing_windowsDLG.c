@@ -80,7 +80,7 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { WINDOW_CreateIndirect, "runing_windows", ID_WINDOW_0, 0, 0, 800, 480, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "title", ID_TEXT_0, 80, 20, 640, 150, 0, 0x64, 0 },
   { TEXT_CreateIndirect, "state", ID_TEXT_1, 80, 180, 640, 80, 0, 0x64, 0 },
-  { TEXT_CreateIndirect, "runing_stat", ID_TEXT_2, 80, 300, 640, 80, 0, 0x64, 0 },
+  { TEXT_CreateIndirect, "runing_stat", ID_TEXT_2, 40, 300, 720, 80, 0, 0x64, 0 },
   // USER START (Optionally insert additional widgets)
   // USER END
 };
@@ -122,7 +122,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     // Initialization of 'state'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
-    TEXT_SetText(hItem, "states");
+    TEXT_SetText(hItem, "ºÚÆ¡");
     TEXT_SetTextAlign(hItem, GUI_TA_HCENTER | GUI_TA_VCENTER);
     TEXT_SetFont(hItem, HZ24_24);
     //
@@ -162,6 +162,16 @@ WM_HWIN Createruning_windows(void) {
 }
 
 // USER START (Optionally insert additional public code)
+
+void show_cur_stat(char* stat_info)
+{
+	WM_HWIN hItem;
+	hItem = WM_GetDialogItem(runing_window, ID_TEXT_2);
+	TEXT_SetFont(hItem, HZ24_24);
+	TEXT_SetText(hItem, stat_info);	
+}
+
+
 // USER END
 
 /*************************** End of file ****************************/
