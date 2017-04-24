@@ -37,6 +37,7 @@
 
 // USER START (Optionally insert additional defines)
 #include "include.h"
+#include "DIALOG.h"
 // USER END
 
 /*********************************************************************

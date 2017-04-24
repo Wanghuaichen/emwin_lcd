@@ -83,5 +83,17 @@ WM_HWIN Createruning_windows(void);
 WM_HWIN CreateWindow(void);
 WM_HWIN Createparameter_Seting(void);
 WM_HWIN Createkey_board(void);
+
+void set_icon_start_drain(void);
+void set_icon_stop_drain(void);
+void set_icon_start_watering(void);
+void set_icon_stop_watering(void);
+void set_icon_start_wash(void);
+void set_icon_stop_wash(void);
+
+
+
+
+
 #endif
 

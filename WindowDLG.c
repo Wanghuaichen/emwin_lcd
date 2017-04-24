@@ -77,6 +77,48 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 */
 
 // USER START (Optionally insert additional static code)
+
+
+
+void set_icon_start_drain(void)
+{
+	button_stat[0]= 1;
+	ICONVIEW_SetFont(icon_view, HZ32_32);
+	ICONVIEW_SetItemText(icon_view,1,"排水中");
+}
+
+void set_icon_stop_drain(void)
+{
+	button_stat[0]= 0;
+	ICONVIEW_SetFont(icon_view, HZ32_32);
+	ICONVIEW_SetItemText(icon_view,1,"排水");
+}
+void set_icon_start_watering(void)
+{
+	button_stat[1]= 1;
+	ICONVIEW_SetFont(icon_view, HZ32_32);
+	ICONVIEW_SetItemText(icon_view,2,"加水中");
+}
+
+void set_icon_stop_watering(void)
+{
+	button_stat[1]= 0;
+	ICONVIEW_SetFont(icon_view, HZ32_32);
+	ICONVIEW_SetItemText(icon_view,2,"加水");
+}
+void set_icon_start_wash(void)
+{
+	button_stat[2]= 1;
+	ICONVIEW_SetFont(icon_view, HZ32_32);
+	ICONVIEW_SetItemText(icon_view,3,"冲洗中");
+}
+void set_icon_stop_wash(void)
+{
+	button_stat[2]= 0;
+	ICONVIEW_SetFont(icon_view, HZ32_32);
+	ICONVIEW_SetItemText(icon_view,3,"冲洗");
+}
+
 // USER END
 
 /*********************************************************************
@@ -178,23 +220,21 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
          switch(ICONVIEW_GetSel(icon_view))
         {
         case 0 :
-            //ICONVIEW_SetItemText(icon_view,0,"nj");
             show_parameter_window();
+            //ICONVIEW_SetItemText(icon_view,0,"nj");
             break;
         case 1 :
             //ICONVIEW_SetItemText(icon_view,1,"ss");
             if(button_stat[0] == 0)
             {
-                button_stat[0]= 1;
-                ICONVIEW_SetFont(icon_view, HZ32_32);
-                ICONVIEW_SetItemText(icon_view,1,"排水中");
+                //ICONVIEW_SetFont(icon_view, HZ32_32);
+                //ICONVIEW_SetItemText(icon_view,1,"排水中");
                 send_start_drain();
             }
             else
             {
-                button_stat[0]= 0;
-                ICONVIEW_SetFont(icon_view, HZ32_32);
-                ICONVIEW_SetItemText(icon_view,1,"排水");
+                //ICONVIEW_SetFont(icon_view, HZ32_32);
+                //ICONVIEW_SetItemText(icon_view,1,"排水");
                 send_stop_drain();
             }
             break;
@@ -203,16 +243,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
             //ICONVIEW_SetItemText(icon_view,1,"ss");
             if(button_stat[1] == 0)
             {
-                button_stat[1]= 1;
-                ICONVIEW_SetFont(icon_view, HZ32_32);
-                ICONVIEW_SetItemText(icon_view,2,"加水中");
+                //ICONVIEW_SetFont(icon_view, HZ32_32);
+                //ICONVIEW_SetItemText(icon_view,2,"加水中");
               send_start_watering();
             }
             else
             {
-                button_stat[1]= 0;
-                ICONVIEW_SetFont(icon_view, HZ32_32);
-                ICONVIEW_SetItemText(icon_view,2,"加水");
+                //ICONVIEW_SetFont(icon_view, HZ32_32);
+                //ICONVIEW_SetItemText(icon_view,2,"加水");
               send_stop_watering();
             }
             break;
@@ -221,16 +259,14 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
             //ICONVIEW_SetItemText(icon_view,1,"ss");
             if(button_stat[2] == 0)
             {
-                button_stat[2]= 1;
-                ICONVIEW_SetFont(icon_view, HZ32_32);
-                ICONVIEW_SetItemText(icon_view,3,"冲洗中");
+                //ICONVIEW_SetFont(icon_view, HZ32_32);
+                //ICONVIEW_SetItemText(icon_view,3,"冲洗中");
               send_start_wash();
             }
             else
             {
-                button_stat[2]= 0;
-                ICONVIEW_SetFont(icon_view, HZ32_32);
-                ICONVIEW_SetItemText(icon_view,3,"冲洗");
+                //ICONVIEW_SetFont(icon_view, HZ32_32);
+                //ICONVIEW_SetItemText(icon_view,3,"冲洗");
               send_stop_wash();
             }
             break;

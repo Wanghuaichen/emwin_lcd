@@ -61,6 +61,7 @@
 #define WINDOWS_BACK_COLOUR (0Xbdfb86)
 #include "include.h"
 #include "save_data.h"
+#include "protocol.h"
 // USER END
 
 /*********************************************************************
@@ -504,7 +505,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         // USER START (Optionally insert code for reacting on notification message)
          hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTBOX_0);
         send_paratemer(LISTBOX_GetSel(hItem));
-        show_runing_window();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
